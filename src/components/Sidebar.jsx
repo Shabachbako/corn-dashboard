@@ -38,7 +38,7 @@ const Sidebar = () => {
         <div className="p-6 flex items-center justify-between">
           {!collapsed && (
             <h1 className="text-sidebar-foreground text-xl font-semibold tracking-tight animate-fade-in">
-              Crypto<span className="text-sidebar-primary">Dash</span>
+              Pay<span className="text-sidebar-primary">Coin</span>
             </h1>
           )}
           <button 
