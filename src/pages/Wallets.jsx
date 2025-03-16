@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
@@ -12,7 +11,7 @@ const Wallets = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   
-  // Mock data for wallets
+  // Updated wallet data including USDT, BNB, Dogecoin, and XRP
   const walletData = [
     {
       id: 'bitcoin',
@@ -61,6 +60,30 @@ const Wallets = () => {
       balance: 45.2,
       balanceUsd: 210.87,
       iconUrl: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.svg?v=024'
+    },
+    {
+      id: 'usdt',
+      name: 'Tether',
+      symbol: 'USDT',
+      balance: 1500,
+      balanceUsd: 1500.00,
+      iconUrl: 'https://cryptologos.cc/logos/tether-usdt-logo.svg?v=024'
+    },
+    {
+      id: 'bnb',
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      balance: 3.2,
+      balanceUsd: 890.44,
+      iconUrl: 'https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=024'
+    },
+    {
+      id: 'dogecoin',
+      name: 'Dogecoin',
+      symbol: 'DOGE',
+      balance: 5000,
+      balanceUsd: 356.75,
+      iconUrl: 'https://cryptologos.cc/logos/dogecoin-doge-logo.svg?v=024'
     }
   ];
   
@@ -72,8 +95,8 @@ const Wallets = () => {
     )
     .filter(wallet => {
       if (activeTab === 'all') return true;
-      if (activeTab === 'major') return ['BTC', 'ETH'].includes(wallet.symbol);
-      if (activeTab === 'alt') return !['BTC', 'ETH'].includes(wallet.symbol);
+      if (activeTab === 'major') return ['BTC', 'ETH', 'BNB', 'USDT'].includes(wallet.symbol);
+      if (activeTab === 'alt') return !['BTC', 'ETH', 'BNB', 'USDT'].includes(wallet.symbol);
       return true;
     });
   
@@ -103,7 +126,7 @@ const Wallets = () => {
         </TabsList>
         
         <TabsContent value={activeTab} className="space-y-4">
-          {filteredWallets.map((wallet, index) => (
+          {filteredWallets.map((wallet) => (
             <Link to={`/wallets/${wallet.id}`} key={wallet.id}>
               <WalletItem
                 className={`animate-fade-in`}
@@ -113,7 +136,6 @@ const Wallets = () => {
                 balance={wallet.balance}
                 balanceUsd={wallet.balanceUsd}
                 iconUrl={wallet.iconUrl}
-                key={wallet.id}
               />
             </Link>
           ))}

@@ -1,21 +1,15 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import BalanceDisplay from '@/components/BalanceDisplay';
 import CryptoCard from '@/components/CryptoCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowUp, ArrowDown, Eye, EyeOff } from 'lucide-react';
+import { ArrowUp, ArrowDown, Eye, EyeOff, Wallet, Send, History, Settings } from 'lucide-react';
 
 const Dashboard = () => {
   const [showBalance, setShowBalance] = useState(true);
   const [activeTab, setActiveTab] = useState('all');
-
-  // Mock data for total balance
-  const totalBalance = {
-    usd: 24689.57,
-    btc: 0.57,
-    eth: 4.89
-  };
+  const navigate = useNavigate(); // React Router navigation
 
   // Mock data for cryptocurrencies
   const cryptoData = [
@@ -57,6 +51,9 @@ const Dashboard = () => {
     }
   ];
 
+  // Calculate total balance dynamically
+  const totalBalance = cryptoData.reduce((total, crypto) => total + crypto.balanceUsd, 0);
+
   // Filter cryptocurrencies based on the active tab
   const filteredCryptos = cryptoData.filter(crypto => {
     if (activeTab === 'all') return true;
@@ -82,12 +79,20 @@ const Dashboard = () => {
             {showBalance ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
         </div>
-        <BalanceDisplay 
-          usdBalance={totalBalance.usd} 
-          btcBalance={totalBalance.btc} 
-          ethBalance={totalBalance.eth} 
-          showBalance={showBalance}
-        />
+        <p className="text-2xl font-semibold">
+          {showBalance ? `$${totalBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '****'}
+        </p>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-around mt-4">
+          <button 
+            onClick={() => navigate('/wallets')}
+            className="flex flex-col items-center p-3 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+          >
+            <Wallet size={24} className="text-blue-500" />
+            <span className="text-xs mt-1">Wallet</span>
+          </button>
+        </div>
       </Card>
       
       <div className="space-y-4">
@@ -102,50 +107,17 @@ const Dashboard = () => {
             <TabsTrigger value="losers">Losers <ArrowDown className="ml-1 h-4 w-4 text-red-500" /></TabsTrigger>
           </TabsList>
           
-          <TabsContent value="all" className="space-y-4">
-            {filteredCryptos.map((crypto, index) => (
+          <TabsContent value={activeTab} className="space-y-4">
+            {filteredCryptos.map((crypto) => (
               <CryptoCard
-                className={`animate-fade-in`}
-                id={crypto.id}
+                className="animate-fade-in"
+                key={crypto.id}
                 name={crypto.name}
                 symbol={crypto.symbol}
                 balance={crypto.balance}
                 balanceUsd={crypto.balanceUsd}
                 change24h={crypto.change24h}
                 iconUrl={crypto.iconUrl}
-                key={crypto.id}
-              />
-            ))}
-          </TabsContent>
-          
-          <TabsContent value="gainers" className="space-y-4">
-            {filteredCryptos.map((crypto, index) => (
-              <CryptoCard
-                className={`animate-fade-in`}
-                id={crypto.id}
-                name={crypto.name}
-                symbol={crypto.symbol}
-                balance={crypto.balance}
-                balanceUsd={crypto.balanceUsd}
-                change24h={crypto.change24h}
-                iconUrl={crypto.iconUrl}
-                key={crypto.id}
-              />
-            ))}
-          </TabsContent>
-          
-          <TabsContent value="losers" className="space-y-4">
-            {filteredCryptos.map((crypto, index) => (
-              <CryptoCard
-                className={`animate-fade-in`}
-                id={crypto.id}
-                name={crypto.name}
-                symbol={crypto.symbol}
-                balance={crypto.balance}
-                balanceUsd={crypto.balanceUsd}
-                change24h={crypto.change24h}
-                iconUrl={crypto.iconUrl}
-                key={crypto.id}
               />
             ))}
           </TabsContent>

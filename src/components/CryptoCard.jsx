@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -7,14 +6,14 @@ const CryptoCard = ({
   name,
   symbol,
   balance,
-  balance_usd,
+  balanceUsd, // Fixed prop name
   change24h,
-  icon_url,
+  iconUrl, // Fixed prop name
   className,
   style
 }) => {
   const isPositiveChange = change24h >= 0;
-  
+
   return (
     <div 
       className={cn(
@@ -25,7 +24,15 @@ const CryptoCard = ({
     >
       <div className="flex items-center space-x-4">
         <div className="h-12 w-12 rounded-full flex items-center justify-center bg-primary/10">
-          <img src={icon_url} alt={symbol} className="h-8 w-8" />
+          <img 
+            src={iconUrl} 
+            alt={symbol} 
+            className="h-8 w-8"
+            onError={(e) => {
+              e.target.onerror = null; 
+              e.target.src = "https://via.placeholder.com/40"; // Fallback image
+            }}
+          />
         </div>
         <div className="flex-1">
           <h3 className="font-semibold">{name}</h3>
@@ -34,7 +41,7 @@ const CryptoCard = ({
         <div className="text-right">
           <p className="font-medium">{balance.toFixed(4)} {symbol}</p>
           <p className="text-muted-foreground text-sm">
-            ${balance_usd.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            ${balanceUsd.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
         </div>
       </div>

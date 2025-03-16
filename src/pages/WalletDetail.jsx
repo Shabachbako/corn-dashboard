@@ -36,6 +36,34 @@ const getWalletData = (id) => {
         { type: 'receive', amount: 2.5, date: '2023-04-01T08:30:00Z', from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F' }
       ]
     },
+    'ripple': {
+      name: 'Ripple',
+      symbol: 'XRP',
+      balance: 1250.89,
+      balanceUsd: 687.90,
+      address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+      iconUrl: 'https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=024',
+      change24h: -1.2,
+      transactions: [
+        { type: 'receive', amount: 1.2, date: '2023-04-14T11:20:00Z', from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F' },
+        { type: 'send', amount: 0.5, date: '2023-04-09T16:40:00Z', to: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' },
+        { type: 'receive', amount: 2.5, date: '2023-04-01T08:30:00Z', from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F' }
+      ]
+    },
+    'litecoin': {
+      name: 'Litecoin',
+      symbol: 'LTC',
+      balance: 15.8,
+      balanceUsd: 1192.86,
+      address: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+      iconUrl: 'https://cryptologos.cc/logos/litecoin-ltc-logo.svg?v=024',
+      change24h: 5.7,
+      transactions: [
+        { type: 'receive', amount: 5.8, date: '2023-04-13T13:10:00Z', from: 'So11113111111111111111111111111111111111112' },
+        { type: 'send', amount: 2.0, date: '2023-04-07T12:50:00Z', to: 'So11111111115551111111111111111111111111112' },
+        { type: 'receive', amount: 12.0, date: '2023-03-29T15:20:00Z', from: 'So11113111111111111111111111111111111111112' }
+      ]
+    },
     'solana': {
       name: 'Solana',
       symbol: 'SOL',
@@ -57,6 +85,48 @@ const getWalletData = (id) => {
       balanceUsd: 532.46,
       address: 'addr1qxy8gj7ns6ck8xvl3ksjdz3ld66veaeulcsyspjp23c7xrhp9umek5rqdy5hutgzqvla3n3kpgzkjhp7xjctn6j5k9zsyhku4n',
       iconUrl: 'https://cryptologos.cc/logos/cardano-ada-logo.png',
+      change24h: 0.8,
+      transactions: [
+        { type: 'receive', amount: 150.0, date: '2023-04-11T09:45:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' },
+        { type: 'send', amount: 75.0, date: '2023-04-02T17:30:00Z', to: 'addr1qxlj74xmz9dskl4xafmx0qvdl0gxmkz9pvmvy4n' },
+        { type: 'receive', amount: 340.2, date: '2023-03-25T19:20:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' }
+      ]
+    },
+    'usdt': {
+      name: 'Tether',
+      symbol: 'USDT',
+      balance: 1500,
+      balanceUsd: 1500.00,
+      address: 'addr1qxy8gj7ns6ck8xvl3ksjdz3ld66veaeulcsyspjp23c7xrhp9umek5rqdy5hutgzqvla3n3kpgzkjhp7xjctn6j5k9zsyhku4n',
+      iconUrl: 'https://cryptologos.cc/logos/tether-usdt-logo.svg?v=024',
+      change24h: 0.8,
+      transactions: [
+        { type: 'receive', amount: 150.0, date: '2023-04-11T09:45:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' },
+        { type: 'send', amount: 75.0, date: '2023-04-02T17:30:00Z', to: 'addr1qxlj74xmz9dskl4xafmx0qvdl0gxmkz9pvmvy4n' },
+        { type: 'receive', amount: 340.2, date: '2023-03-25T19:20:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' }
+      ]
+    },
+    'bnb': {
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      balance: 3.2,
+      balanceUsd: 890.44,
+      address: 'addr1qxy8gj7ns6ck8xvl3ksjdz3ld66veaeulcsyspjp23c7xrhp9umek5rqdy5hutgzqvla3n3kpgzkjhp7xjctn6j5k9zsyhku4n',
+      iconUrl: 'https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=024',
+      change24h: 0.8,
+      transactions: [
+        { type: 'receive', amount: 150.0, date: '2023-04-11T09:45:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' },
+        { type: 'send', amount: 75.0, date: '2023-04-02T17:30:00Z', to: 'addr1qxlj74xmz9dskl4xafmx0qvdl0gxmkz9pvmvy4n' },
+        { type: 'receive', amount: 340.2, date: '2023-03-25T19:20:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' }
+      ]
+    },
+    'dogecoin': {
+      name: 'Dogecoin',
+      symbol: 'DOGE',
+      balance: 5000,
+      balanceUsd: 356.75,
+      address: 'addr1qxy8gj7ns6ck8xvl3ksjdz3ld66veaeulcsyspjp23c7xrhp9umek5rqdy5hutgzqvla3n3kpgzkjhp7xjctn6j5k9zsyhku4n',
+      iconUrl: 'https://cryptologos.cc/logos/dogecoin-doge-logo.svg?v=024',
       change24h: 0.8,
       transactions: [
         { type: 'receive', amount: 150.0, date: '2023-04-11T09:45:00Z', from: 'addr1qxfxlatvpnl7mqzzq9mudgmnjrk53254fsvxj065k6v5qhz' },
